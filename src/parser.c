@@ -30,6 +30,11 @@ static bool is_nullptr(struct ParserTreeParamList *ptpl) {
 		next();
 		return true;
 	}
+    if (!*ptpl -> ret_line) {
+		printf("( FL ) The struct ParserTreeParamList -> ret_line is false");
+        next();
+        return true;
+    }
 	if (nullptr == ptpl -> exc_list) {
 		printf("( FL ) Null pointer for the struct ParserTreeParamList -> exc_list");
 		next();
