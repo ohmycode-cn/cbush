@@ -1,3 +1,4 @@
+#include "prompt_header.h"
 #include "parser.h"
 #include "next.h"
 
@@ -5,13 +6,15 @@
 #include <stdbool.h>
 
 static bool is_nullptr(struct ParserTreeParamList *ptpl) {
+
 	if (nullptr == ptpl) {
 		printf("( FL ) We are unsupported null pointer"); 
 		next();
 		return true;
 	}
 	if (nullptr == ptpl -> buf_size) {
-		printf("( FL ) Null pointer for the struct ParserTreeParamList -> buf_size");
+        p_fatal();
+		printf(" Null pointer for the struct ParserTreeParamList -> buf_size");
 		next();
 		return true;
 	}
@@ -36,7 +39,8 @@ static bool is_nullptr(struct ParserTreeParamList *ptpl) {
         return true;
     }
 	if (nullptr == ptpl -> exc_list) {
-		printf("( FL ) Null pointer for the struct ParserTreeParamList -> exc_list");
+        p_fatal();
+		printf(" Null pointer for the struct ParserTreeParamList -> exc_list");
 		next();
 		return true;
 	}
