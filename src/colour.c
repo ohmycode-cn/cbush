@@ -1,5 +1,9 @@
 #include "colour.h"
 
+int outsize() {
+    return 11;
+}
+
 const struct ColourLib colour = {
     .B = "\033[0;30m",
     .R = "\033[0;31m",

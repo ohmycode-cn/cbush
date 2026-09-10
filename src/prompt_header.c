@@ -19,9 +19,42 @@ char space() {
 }
 
 void p_fatal() {
-    char *fatal_string = "FL";
-    printf("%s%c%c%s%s%s%c%s%c%s", colour.Y, bracket_l(), space(), colour.R, fatal_string, colour.E, space(), colour.Y, bracket_r(), colour.E);
+    char *str = "FL";
+    printf("%s%c%c%s%s%s%c%s%c%s", colour.Y, bracket_l(), space(), colour.R, str, colour.E, space(), colour.Y, bracket_r(), colour.E);
 }
 
-void p_error() {}
-void p_debug() {}
+void p_allow() {
+    char *str = "OK";
+    printf("%s%c%c%s%s%s%c%s%c%s", colour.G, bracket_l(), space(), colour.G, str, colour.E, space(), colour.Y, bracket_r(), colour.E);
+}
+
+void p_error() {
+    char *str = "ER";
+    printf("%s%c%c%s%s%s%c%s%c%s", colour.G, bracket_l(), space(), colour.G, str, colour.E, space(), colour.Y, bracket_r(), colour.E);
+}
+
+void p_debug() {
+    char *str = "DG";
+    printf("%s%c%c%s%s%s%c%s%c%s", colour.G, bracket_l(), space(), colour.G, str, colour.E, space(), colour.Y, bracket_r(), colour.E);
+}
+
+char *o_fatal() {
+    char *str = "( \033[0;31mFL\033[0;0m ) "; 
+    return str;
+}
+
+char *o_allow() {
+    char *str = "( \033[0;31mFL\033[0;0m ) "; 
+    return str;
+}
+
+char *o_error() {
+    char *str = "( \033[0;31mFL\033[0;0m ) "; 
+    return str;
+}
+
+char *out_debug() {
+    char *str = "( \033[0;31mFL\033[0;0m ) "; 
+    return str;
+}
+

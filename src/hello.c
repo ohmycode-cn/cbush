@@ -1,3 +1,4 @@
+#include "colour.h"
 #include "hello.h"
 
 #include <stdio.h>
@@ -11,9 +12,16 @@ static void outmsg() {
         "office web: null",
         "release version: 0.0.1 beta"
     };
-    const char *prefix = {"( OK ) "};
+    auto G = colour.G;
+    auto Y = colour.Y;
+    auto E = colour.E;
+    int  pfsize = outsize() * 2 + 7;
+    char prefix[pfsize];
+    snprintf(prefix, sizeof(prefix), "( %sOK%s ) ", G, E);
+
+
     for (int index = {0}; index < count; index++) { 
-        printf("%s%s\n", prefix, array[index]);
+        printf("%s%s%s%s\n", prefix, Y, array[index], E);
     }
 }
 

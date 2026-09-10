@@ -1,6 +1,9 @@
 #ifndef COLOUR_H
 #define COLOUR_H
 
+
+int outsize();
+
 struct ColourLib {
     const char *B;
     const char *R;
@@ -8,6 +11,7 @@ struct ColourLib {
     const char *G;
     const char *E;
 };
+
 
 extern const struct ColourLib colour;
 
