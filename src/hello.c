@@ -1,5 +1,6 @@
 #include "colour.h"
 #include "hello.h"
+#include "prompt_header.h"
 
 #include <stdio.h>
 #include <stdbool.h>
@@ -12,16 +13,14 @@ static void outmsg() {
         "office web: null",
         "release version: 0.0.1 beta"
     };
-    auto G = colour.G;
-    auto Y = colour.Y;
-    auto E = colour.E;
-    int  pfsize = outsize() * 2 + 7;
-    char prefix[pfsize];
-    snprintf(prefix, sizeof(prefix), "( %sOK%s ) ", G, E);
+    auto Y = colour_yellow();
+    auto E = colour_reset();
 
+    char header[64];
+    prompt_header_str(PROMPT_OK, header, sizeof(header));
 
     for (int index = {0}; index < count; index++) { 
-        printf("%s%s%s%s\n", prefix, Y, array[index], E);
+        printf("%s%s%s%s\n", header, Y, array[index], E);
     }
 }
 

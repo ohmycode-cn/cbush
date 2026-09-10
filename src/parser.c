@@ -1,55 +1,42 @@
 #include "prompt_header.h"
 #include "parser.h"
-#include "next.h"
 
-#include <stdio.h>
 #include <stdbool.h>
 
 static bool is_nullptr(struct ParserTreeParamList *ptpl) {
 
 	if (nullptr == ptpl) {
-		printf("( FL ) We are unsupported null pointer"); 
-		next();
+		prompt_print(PROMPT_FATAL, "We are unsupported null pointer");
 		return true;
 	}
 	if (nullptr == ptpl -> buf_size) {
-        p_fatal();
-		printf(" Null pointer for the struct ParserTreeParamList -> buf_size");
-		next();
+		prompt_print(PROMPT_FATAL, "Null pointer for the struct ParserTreeParamList -> buf_size");
 		return true;
 	}
-	if (0 <= *ptpl -> buf_size) {
-		printf("( FL ) Buffer size less than for the zero");
-		next();
+	if (*ptpl -> buf_size <= 0) {
+		prompt_print(PROMPT_FATAL, "Buffer size less than for the zero");
 		return true;
 	}
 	if (nullptr == ptpl -> buf_line) {
-		printf("( FL ) Null pointer for the struct ParserTreeParamList -> buf_line");
-		next();
+		prompt_print(PROMPT_FATAL, "Null pointer for the struct ParserTreeParamList -> buf_line");
 		return true;
 	}
 	if (nullptr == ptpl -> ret_line) {
-		printf("( FL ) Null pointer for the struct ParserTreeParamList -> ret_line");
-		next();
+		prompt_print(PROMPT_FATAL, "Null pointer for the struct ParserTreeParamList -> ret_line");
 		return true;
 	}
-    if (!*ptpl -> ret_line) {
-		printf("( FL ) The struct ParserTreeParamList -> ret_line is false");
-        next();
-        return true;
-    }
+	if (!*ptpl -> ret_line) {
+		prompt_print(PROMPT_FATAL, "The struct ParserTreeParamList -> ret_line is false");
+		return true;
+	}
 	if (nullptr == ptpl -> exc_list) {
-        p_fatal();
-		printf(" Null pointer for the struct ParserTreeParamList -> exc_list");
-		next();
+		prompt_print(PROMPT_FATAL, "Null pointer for the struct ParserTreeParamList -> exc_list");
 		return true;
 	}
 	return false;
 }
 
 void parser(struct ParserTreeParamList *ptpl) {
-	printf("( DG ) Loaded functional 'parser(...)' done");
-	next();
 	if (is_nullptr(ptpl)) {
 		return;
 	}
